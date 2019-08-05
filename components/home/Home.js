@@ -5,7 +5,12 @@ const screenWidth  = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 const paddingContainer = 40
 export default class Home extends React.Component {
-
+     static navigationOptions = {
+      header : null
+    };
+    handleSeeAll = _ => {
+      this.props.navigation.navigate('Categories')
+    }
     render(){
         return (
             <View style = {styles.container}>
@@ -13,7 +18,8 @@ export default class Home extends React.Component {
                 <View style = {styles.section}>
                     <View style = {{flexDirection : "row", justifyContent : "space-between", alignItems : "center",width : screenWidth - paddingContainer}}>
                         <Text style = {{fontWeight : "bold", fontSize : 25}}>Categories</Text>
-                        <TouchableOpacity>
+                        <TouchableOpacity 
+                          onPress = {this.handleSeeAll}>
                           <Text style = {{color : "rgb(66, 72, 245)"}}>See all ></Text>
                         </TouchableOpacity>
                     </View>

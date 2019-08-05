@@ -1,9 +1,14 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert, Dimensions, ScrollView } from 'react-native';
 import InputWrapper from './InputWrapper';
+import {
+    Button,
+    ButtonProps,
+  } from 'react-native-ui-kitten';
 const screenWidth  = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 export default class SignUp extends React.Component {
+
     constructor(props){
         super(props)
         this.state = {
@@ -14,8 +19,16 @@ export default class SignUp extends React.Component {
             phone : ""
         }
     }
+    static navigationOptions = {
+        header : null,
+        tabBarVisible: false
+    };
     handleChange = (type, value) => {
         this.setState({[type] : value})
+    }
+
+    handleSignIn = _ => {
+        this.props.navigation.navigate('VerifyPhone')
     }
     render(){
         return (
@@ -44,16 +57,17 @@ export default class SignUp extends React.Component {
                         <Text style = {{fontWeight : "bold"}}>Term of Service</Text>
                     </View>
                     <TouchableOpacity
-                        onPress = { () => Alert.alert("press Sign Up")}
+                       onPress = {this.handleSignIn}
                     >
                         <View style = {styles.button}>
                             <Text style = {styles.buttonText}>Sign Up</Text>
                         </View>
                     </TouchableOpacity>
+
                     <View>
                         <View style = {{justifyContent : "center", flexDirection : "row", width : screenWidth - 60}}>
                             <Text>Have an account?</Text>
-                            <TouchableOpacity onPress = {() => Alert.alert("press sign in !")}>
+                            <TouchableOpacity onPress = { () => this.props.navigation.navigate('SignIn')}>
                                 <Text style = {{fontWeight : "bold"}}>
                                     Sign in
                                 </Text>

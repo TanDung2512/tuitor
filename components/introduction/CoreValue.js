@@ -25,15 +25,20 @@ const coreValues = [
   }
 ]
 export default class CoreValue extends React.Component {
+    static navigationOptions = {
+      header : null
+    };
     myScroll;
     nextView = (index) => {
       if( index  == coreValues.length){
+        this.props.navigation.navigate('SignUp')
         return
       }
       this.myScroll.scrollTo({x: screenWidth*index, y: 0, animated: true})
     }
     render(){
         return (
+          <View style = {{flex : 1, marginTop : 0}}>
             <ScrollView
               horizontal
               showsHorizontalScrollIndicator
@@ -51,51 +56,11 @@ export default class CoreValue extends React.Component {
                 })
               }
             </ScrollView>
+          </View>
           );
     }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#FFF",
-    alignItems: 'center',
-    justifyContent: 'center',
-    width : screenWidth,
-    margin : 0
-  },
-  coreValueContainer : {
-    flex : 1,
-    width : screenWidth,
-    alignItems: 'center',
-    margin : 0 ,
-    padding : 0
-    // justifyContent: 'center',
-  },
-  coreValueImage : {
-    width     : screenWidth,
-    height    : screenHeight/2,
-  },
-  coreValueTitle : {
-    fontSize : 30,
-    fontWeight : "bold"
-  },
-  coreValueExplain : {
-    textAlign : "center",
-    padding : 30,
-    fontSize : 18
-  },
-  coreValueIconDots : {
-    flexDirection : "row",
-  },
-  coreValueIconDot : {
-    width  :10,
-    height : 10,
-    borderRadius : 5,
-    borderColor : "black",
-    marginHorizontal : 3,
-    backgroundColor : "white",
-    borderWidth: 0.5,
-  },
+// const styles = StyleSheet.create({
 
-});
+// });

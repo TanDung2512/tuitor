@@ -1,9 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert, Dimensions, ScrollView } from 'react-native';
-import InputWrapper from './InputWrapper';
 const screenWidth  = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
-export default class VerifyPhone extends React.Component {
+export default class Connect extends React.Component {
     static navigationOptions = {
         header : null
       };
@@ -29,7 +28,6 @@ export default class VerifyPhone extends React.Component {
                 <View style={styles.containerScrollView}>
                     <Text style = {{fontSize : 50, fontWeight : "bold", flexShrink: 1}}>Verifying Your Number</Text>
                     <Text style = {{fontSize : 25, color : "gray", marginVertical : 20}}>We've sent your verification code to </Text>
-                    <InputWrapper name = "code" title = "Enter code" placeholder = "" type = "oneTimeCode" onChange = {this.handleChange} value = {this.state.code}/>
                     <TouchableOpacity
                         onPress = {this.handleVerify}
                     >
