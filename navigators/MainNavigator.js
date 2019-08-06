@@ -6,6 +6,9 @@ import React from 'react';
 import { Icon } from 'react-native-elements'
 
 import Home from "../components/home/Home";
+import CheckDetail from "../components/home/CheckDetail";
+import SearchResult from "../components/home/SearchResult";
+import ReviewBooking from "../components/home/ReviewBooking";
 import SignUp from '../components/authentication/SignUp';
 import SignIn from '../components/authentication/SignIn';
 import VerifyPhone from '../components/authentication/VerifyPhone';
@@ -23,28 +26,43 @@ const MainNavigator = createStackNavigator({
     // CoreValue : {
     //     screen : CoreValue
     // },    
-    SignIn : {
-        screen : SignIn,
+    // SignIn : {
+    //     screen : SignIn,
 
+    // },
+    // SignUp : {
+    //     screen : SignUp,
+    // },
+    // Home : {
+    //     screen : Home,
+    //     navigationOptions : {
+    //         header : null,    
+    //         tabBarVisible : true
+    //     }
+    // },
+    // VerifyPhone : {
+    //   screen : VerifyPhone
+    // },
+    // UserLocation : {
+    //   screen : UserLocation,
+    // },
+    // Categories : {
+    //   screen : Categories
+    // },
+    CheckDetail : {
+      screen : CheckDetail,
+      navigationOptions : {
+        headerTransparent: true
+      }
     },
-    SignUp : {
-        screen : SignUp,
-    },
-    Home : {
-        screen : Home,
-        navigationOptions : {
-            header : null,    
-            tabBarVisible : true
-        }
-    },
-    VerifyPhone : {
-        screen : VerifyPhone
-    },
-    UserLocation : {
-        screen : UserLocation,
-    },
-    Categories : {
-        screen : Categories
+    ReviewBooking : {
+      screen : ReviewBooking
+    },   
+    SearchResult : {
+      screen : SearchResult,
+      navigationOptions : {
+        header: null
+      }
     }
 });
   
@@ -52,8 +70,7 @@ MainNavigator.navigationOptions = ({ navigation }) => {
     let tabBarVisible = true;
     for (let i = 0; i < navigation.state.routes.length; i++) {
         route = navigation.state.routes[i].routeName
-
-        if(route == "SignIn" || route == "SignUp" || route == "VerifyPhone") {
+        if(route == "SignIn" || route == "SignUp" || route == "VerifyPhone" || route == "ReviewBooking" || route == "CheckDetail" ) {
             tabBarVisible = false;
         }
         else {
@@ -92,8 +109,8 @@ const NotificationNavigator = createStackNavigator({
  export default createAppContainer(
    createBottomTabNavigator(
     {
-      Search: {screen : MainNavigator},
-      Booking: {screen : BookingNavigator},
+      Search  : {screen : MainNavigator},
+      Booking : {screen : BookingNavigator},
       Connect : {screen : ConnectNavigator},
       Notification : {screen : NotificationNavigator},
       Account : {screen : AccountNavigator},

@@ -13,6 +13,7 @@ const Button = (props) => <TouchableOpacity
 
 export default function SearchResult(props){
     return(
+        <ScrollView>
         <View style = {styles.container}>
             <Image source = {require('../../assets/home/checked.png')}/>
             <Text style = {{fontSize : 40, fontWeight : 'bold'}}>Success !</Text>
@@ -34,8 +35,9 @@ export default function SearchResult(props){
                     <Text style = {{fontWeight : "600", fontSize : 17}}>0.31 mil away</Text>
                 </View>
             </View>
-            <Button name = "Check Details"/>
+            {/* <Button name = "Check Details"/> */}
         </View>
+        </ScrollView>
     )
 }
 
@@ -46,6 +48,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#EFF',
         alignItems: 'center',
         justifyContent : 'center',
+        height : screenHeight
     },
     infoContainer : {
         backgroundColor: '#FFF',

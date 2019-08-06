@@ -5,12 +5,18 @@ import { Icon } from 'react-native-elements'
 const screenWidth  = Dimensions.get('window').width;
 const screenHeight = Dimensions.get('window').height;
 
-const Button = (props) => <TouchableOpacity
+const Button = (props) => {
+
+    return (
+    <TouchableOpacity
+        onPress = {props.toggleBtn}
     >
-    <View style = {styles.button}>
-        <Text style = {styles.buttonText}>{props.name}</Text>
-    </View>
-</TouchableOpacity>
+        <View style = {styles.button}>
+            <Text style = {styles.buttonText}>{props.name}</Text>
+        </View>
+    </TouchableOpacity>
+    )
+}
 
 const RateFigure = (props) => <View style = {styles.figureContainer}>
     <Text style = {styles.numRate}>{props.num}</Text>
@@ -43,10 +49,15 @@ const Review = (props) => (
                 qwdqwdqwdqwdqwdqwdqwdqwdqwdqwd qw dqw dqw dkq krerqr
             </Text>
         </View>
-        <Button name = "Book Now"/>
+        <Button name = "Book Now" toggleBtn = {props.toggleBtn}/>
     </View>
 )
 export default function CheckDetail(props){
+
+    const toggleBtn = _ => {
+
+        props.navigation.navigate('ReviewBooking')
+    }
     return(
 
     <ScrollView>
@@ -116,8 +127,8 @@ export default function CheckDetail(props){
                         <Text style = {{fontWeight : "500", fontSize : 17}}>43 Bourice Street, Newbridge NSW 837 Raffles Place, Bloat Band M83</Text> 
                     </View>
                     <View >
-                        <Text style = {styles.titleText}>Reviews</Text>
-                        <Review/>
+                        <Text style = {styles.titleText} >Reviews</Text>
+                        <Review toggleBtn = {toggleBtn}/>
                     </View>
                 </View>
             </View>
